@@ -3,7 +3,7 @@ Source: M4_PACKAGE_NAME
 Section: web
 Priority: optional
 Maintainer: M4_PUBLISHER_NAME <M4_SUPPORT_MAIL>
-Build-Depends: debhelper (>= 8.0.0), util-linux (>= 2.38)
+Build-Depends: debhelper (>= 8.0.0), util-linux (>= 2.38), brotli
 
 Package: M4_PACKAGE_NAME
 Architecture: M4_DEB_ARCH
@@ -35,5 +35,8 @@ ifelse(eval(ifelse(M4_PRODUCT_NAME,documentserver-ee,1,0)||ifelse(M4_PRODUCT_NAM
   zlib1g
 Recommends:
   sudo,
+  brotli,
+  libnginx-mod-http-brotli-filter,
+  libnginx-mod-http-brotli-static,
 Description: defn(`DEB[Summary]')
 defn(`DEB[Description]')

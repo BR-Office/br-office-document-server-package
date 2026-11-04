@@ -43,8 +43,9 @@ clean_ds_files() {
 	DIR="/var/www/M4_DS_PREFIX"
 	LOG_DIR="/var/log/M4_DS_PREFIX"
 	APP_DIR="/var/lib/M4_DS_PREFIX"
-	rm -f $DIR/sdkjs/common/AllFonts.js
+	rm -f $DIR/sdkjs/common/AllFonts.js $DIR/sdkjs/common/AllFonts.js.br
 	rm -f $DIR/sdkjs/common/Images/fonts_thumbnail*
+	rm -f /etc/nginx/includes/ds-brotli.conf
 	rm -f $DIR/sdkjs/*/sdk-all.cache
 	rm -f $DIR/server/FileConverter/bin/font_selection.bin
 	rm -f $DIR/server/FileConverter/bin/AllFonts.js

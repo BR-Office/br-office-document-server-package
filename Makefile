@@ -232,6 +232,7 @@ COMMON_DEPS += common/documentserver/nginx/includes/ds-docservice.conf
 COMMON_DEPS += common/documentserver/nginx/includes/ds-letsencrypt.conf
 COMMON_DEPS += common/documentserver/nginx/includes/http-common.conf
 COMMON_DEPS += common/documentserver/nginx/ds-ssl.conf.tmpl
+COMMON_DEPS += common/documentserver/nginx/ds-brotli.conf.tmpl
 COMMON_DEPS += common/documentserver/nginx/ds.conf.tmpl
 COMMON_DEPS += common/documentserver/nginx/ds.conf
 COMMON_DEPS += common/documentserver-example/nginx/includes/ds-example.conf
