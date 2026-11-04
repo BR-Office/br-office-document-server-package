@@ -80,6 +80,10 @@ rm -f \
   $DIR/sdkjs/common/Images/*.gz \
   $DIR/sdkjs/slide/themes/themes.js.gz
 
+#Brotli: drop the .br of what was just regenerated, compress the new fonts and enable nginx brotli
+#(when its modules are installed). nginx is reloaded by the caller.
+documentserver-static-brotli.sh -r false
+
 #Restart web-site and converter
 if [ "$ONLYOFFICE_DATA_CONTAINER" != "true" ]; then
   if pgrep -x ""systemd"" >/dev/null; then

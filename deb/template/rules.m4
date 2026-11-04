@@ -19,6 +19,13 @@ execute_after_dh_fixperms:
 	chmod o-rwx debian/M4_PACKAGE_NAME/etc/M4_DS_PREFIX/*.json
 
 execute_before_dh_builddeb:
+	# Brotli quality 11 next to every static web file the package ships, for nginx brotli_static: too slow
+	# to do at install (about 0.3 MB/s), 25 % smaller than gzip on the editor's scripts. Files generated at
+	# install (AllFonts.js, api.js, themes, fonts) are compressed by documentserver-static-brotli.sh.
+	find debian/M4_PACKAGE_NAME/var/www/M4_DS_PREFIX/web-apps debian/M4_PACKAGE_NAME/var/www/M4_DS_PREFIX/sdkjs \
+		debian/M4_PACKAGE_NAME/var/www/M4_DS_PREFIX/sdkjs-plugins -type f -size +1k \
+		\( -name '*.js' -o -name '*.json' -o -name '*.htm' -o -name '*.html' -o -name '*.css' -o -name '*.wasm' -o -name '*.svg' \) \
+		-print0 | xargs -0 -r -P $(shell nproc) -n 8 brotli -k -f -q 11 --
 	hardlink --ignore-time debian/M4_PACKAGE_NAME/var/www/M4_DS_PREFIX/web-apps
 
 override_dh_builddeb:

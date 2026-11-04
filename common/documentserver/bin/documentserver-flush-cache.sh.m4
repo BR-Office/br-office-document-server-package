@@ -30,7 +30,7 @@ API_PATH="/var/www/M4_DS_PREFIX/web-apps/apps/api/documents/api.js"
 cp -f ${API_PATH}.tpl ${API_PATH}
 sed -i "s/{{HASH_POSTFIX}}/${HASH}/g" ${API_PATH}
 chown ds:ds ${API_PATH}
-rm -f ${API_PATH}.gz
+rm -f ${API_PATH}.gz ${API_PATH}.br
 
 if [ "$RESTART_CONDITION" != "false" ]; then
     if (pgrep -x "systemd" > /dev/null) && systemctl is-active --quiet nginx; then
